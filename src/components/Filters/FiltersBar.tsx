@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { useTaskStore } from '../../store/useTaskStore'
 import { usesAnyFilters } from '../../utils/queryParamHelpers'
 import { USERS } from '../../utils/dataGenerator'
@@ -52,8 +52,8 @@ export default function FiltersBar() {
                                 key={status}
                                 onClick={() => toggleStatusFilter(status)}
                                 className={`px-3 py-1 rounded text-sm font-medium transition ${filters.status.includes(status as any)
-                                        ? 'bg-blue-600 text-white'
-                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    ? 'bg-blue-600 text-white'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
                                 {status}
@@ -70,8 +70,8 @@ export default function FiltersBar() {
                                 key={priority}
                                 onClick={() => togglePriorityFilter(priority)}
                                 className={`px-3 py-1 rounded text-sm font-medium transition ${filters.priority.includes(priority as any)
-                                        ? 'bg-red-600 text-white'
-                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    ? 'bg-red-600 text-white'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
                                 {priority}
@@ -88,8 +88,8 @@ export default function FiltersBar() {
                                 key={user.id}
                                 onClick={() => toggleAssigneeFilter(user.id)}
                                 className={`px-3 py-1 rounded text-sm font-medium transition ${filters.assignee.includes(user.id)
-                                        ? `${user.color} text-white`
-                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    ? `${user.color} text-white`
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
                                 {user.initials}

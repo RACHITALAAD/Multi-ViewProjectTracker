@@ -31,9 +31,9 @@ export function generateTasks(count: number = 500): Task[] {
         const priority: Priority = priorities[Math.floor(Math.random() * priorities.length)]
         const user = USERS[Math.floor(Math.random() * USERS.length)]
 
-        // Random dates: some past, some future, some missing start dates
+
         const daysOffset = Math.floor(Math.random() * 30) - 15
-        const hasStartDate = Math.random() > 0.2 // 80% have start date
+        const hasStartDate = Math.random() > 0.2
 
         let startDate: string | undefined
         if (hasStartDate) {

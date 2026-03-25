@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { Task } from '../../types'
 import { parseISO, isToday as isTodayFn, differenceInDays, format } from 'date-fns'
 

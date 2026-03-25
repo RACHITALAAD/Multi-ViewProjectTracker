@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTaskStore } from './store/useTaskStore'
 import { filtersToQuery, queryToFilters } from './utils/queryParamHelpers'
 import { useCollaborationSimulation } from './hooks/useCollaborationSimulation'
@@ -60,8 +60,8 @@ export default function App() {
                 key={view.id}
                 onClick={() => setCurrentView(view.id)}
                 className={`px-4 py-2 rounded font-medium transition ${currentView === view.id
-                    ? 'bg-blue-600 text-white shadow'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-blue-600 text-white shadow'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
                 {view.label}

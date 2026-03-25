@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Task, Status, Priority, CollaborationPresence, ListSortKey } from '../types'
+import { Task, Status, CollaborationPresence, ListSortKey } from '../types'
 import { generateTasks, USERS } from '../utils/dataGenerator'
 import type { Filters } from '../utils/queryParamHelpers'
 

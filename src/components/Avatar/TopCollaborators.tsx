@@ -1,6 +1,16 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTaskStore } from '../../store/useTaskStore'
 import UserAvatar from './UserAvatar'
+
+type Collaboration = {
+    userId: string
+}
+
+type User = {
+    id: string
+    name: string
+    avatar?: string
+}
 
 const selectCollaborations = (state: any) => state.collaborations
 const selectUsers = (state: any) => state.users
@@ -10,9 +20,9 @@ export default function TopCollaborators() {
     const users = useTaskStore(selectUsers)
 
     const uniqueUsers = useMemo(() => {
-        const userIds = new Set(collaborations.map(c => c.userId))
+        const userIds = new Set(collaborations.map((c: Collaboration) => c.userId))
         return Array.from(userIds)
-            .map(userId => users.find(u => u.id === userId))
+            .map(userId => users.find((u: User) => u.id === userId))
             .filter(Boolean)
     }, [collaborations.length, users])
 
