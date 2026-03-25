@@ -12,7 +12,7 @@ type Filters = {
     dueTo?: string
 }
 
-const selectFilters = (state: any) => state.filters
+const selectFilters = (state: any): Filters => state.filters
 const selectSetFilters = (state: any) => state.setFilters
 const selectResetFilters = (state: any) => state.resetFilters
 
@@ -23,17 +23,17 @@ export default function FiltersBar() {
 
     const toggleStatusFilter = useCallback((status: Status) => {
         setFilters({
-            status: filters.status.includes(status as any)
+            status: filters.status.includes(status)
                 ? filters.status.filter((s: Status) => s !== status)
-                : [...filters.status, status as any]
+                : [...filters.status, status]
         })
     }, [filters.status, setFilters])
 
     const togglePriorityFilter = useCallback((priority: Priority) => {
         setFilters({
-            priority: filters.priority.includes(priority as any)
+            priority: filters.priority.includes(priority)
                 ? filters.priority.filter((p: Priority) => p !== priority)
-                : [...filters.priority, priority as any]
+                : [...filters.priority, priority]
         })
     }, [filters.priority, setFilters])
 
@@ -45,9 +45,12 @@ export default function FiltersBar() {
         })
     }, [filters.assignee, setFilters])
 
-    const handleDueDateChange = useCallback((type: 'dueFrom' | 'dueTo', value: string) => {
-        setFilters({ [type]: value || undefined })
-    }, [setFilters])
+    const handleDueDateChange = useCallback(
+        (type: 'dueFrom' | 'dueTo', value: string) => {
+            setFilters({ [type]: value || undefined })
+        },
+        [setFilters]
+    )
 
     return (
         <div className="bg-white border-b sticky top-0 z-10">
@@ -60,9 +63,9 @@ export default function FiltersBar() {
                             <button
                                 key={status}
                                 onClick={() => toggleStatusFilter(status)}
-                                className={`px-3 py-1 rounded text-sm font-medium transition ${filters.status.includes(status as any)
-                                    ? 'bg-blue-600 text-white'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                className={`px-3 py-1 rounded text-sm font-medium transition ${filters.status.includes(status)
+                                        ? 'bg-blue-600 text-white'
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
                                 {status}
@@ -74,13 +77,13 @@ export default function FiltersBar() {
                 <div className="flex flex-wrap items-center gap-2">
                     <span className="font-semibold text-sm text-gray-700 w-16">Priority:</span>
                     <div className="flex flex-wrap gap-1">
-                        {(['Critical', 'High', 'Medium', 'Low'] as Priority[]).map(priority => (
+                        {(['Critical', 'High', 'Medium', 'Low'] as Priority[]).map((priority) => (
                             <button
                                 key={priority}
                                 onClick={() => togglePriorityFilter(priority)}
-                                className={`px-3 py-1 rounded text-sm font-medium transition ${filters.priority.includes(priority as any)
-                                    ? 'bg-red-600 text-white'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                className={`px-3 py-1 rounded text-sm font-medium transition ${filters.priority.includes(priority)
+                                        ? 'bg-red-600 text-white'
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
                                 {priority}
@@ -92,13 +95,13 @@ export default function FiltersBar() {
                 <div className="flex flex-wrap items-center gap-2">
                     <span className="font-semibold text-sm text-gray-700 w-16">Assignee:</span>
                     <div className="flex flex-wrap gap-1">
-                        {USERS.map(user => (
+                        {USERS.map((user) => (
                             <button
                                 key={user.id}
                                 onClick={() => toggleAssigneeFilter(user.id)}
                                 className={`px-3 py-1 rounded text-sm font-medium transition ${filters.assignee.includes(user.id)
-                                    ? `${user.color} text-white`
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                        ? `${user.color} text-white`
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
                                 {user.initials}
@@ -114,7 +117,6 @@ export default function FiltersBar() {
                         value={filters.dueFrom || ''}
                         onChange={(e) => handleDueDateChange('dueFrom', e.target.value)}
                         className="px-2 py-1 border border-gray-300 rounded text-sm"
-                        placeholder="From"
                     />
                     <span className="text-gray-500">to</span>
                     <input
@@ -122,7 +124,6 @@ export default function FiltersBar() {
                         value={filters.dueTo || ''}
                         onChange={(e) => handleDueDateChange('dueTo', e.target.value)}
                         className="px-2 py-1 border border-gray-300 rounded text-sm"
-                        placeholder="To"
                     />
 
                     {usesAnyFilters(filters) && (
