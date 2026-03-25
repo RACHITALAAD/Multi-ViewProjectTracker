@@ -48,13 +48,13 @@ export default function App() {
     <div className="flex flex-col h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b">
         <div className="px-6 py-4 flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-gray-900">📋 Project Tracker</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Project Tracker</h1>
 
           <div className="flex gap-2">
             {[
-              { id: 'kanban' as const, label: '📊 Kanban' },
-              { id: 'list' as const, label: '📝 List' },
-              { id: 'timeline' as const, label: '📅 Timeline' },
+              { id: 'kanban' as const, label: 'Kanban' },
+              { id: 'list' as const, label: 'List' },
+              { id: 'timeline' as const, label: 'Timeline' },
             ].map(view => (
               <button
                 key={view.id}
