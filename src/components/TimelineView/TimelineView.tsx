@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTaskStore } from '../../store/useTaskStore'
 import { applyFilters } from '../../utils/filterSort'
-import { startOfMonth, endOfMonth, eachDayOfInterval, format, parseISO, isToday as isTodayFn, differenceInDays } from 'date-fns'
+import { startOfMonth, endOfMonth, eachDayOfInterval, format, isToday as isTodayFn } from 'date-fns'
 import TimelineRow from './TimelineRow'
 import EmptyState from '../EmptyState/EmptyState'
 

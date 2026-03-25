@@ -5,6 +5,17 @@ import { formatDueDate, isOverdue, isDueSoon } from '../../utils/filterSort'
 import UserAvatar from '../Avatar/UserAvatar'
 import CollaborationAvatars from '../Avatar/CollaborationAvatars'
 
+type User = {
+    id: string
+    name: string
+    avatar?: string
+}
+
+type Collaboration = {
+    taskId: string
+    userId: string
+}
+
 interface Props {
     task: Task
     columnStatus?: Status
@@ -21,7 +32,7 @@ const selectUsers = (state: any) => state.users
 const selectDraggedTaskId = (state: any) => state.draggedTaskId
 const selectSetDraggedTaskId = (state: any) => state.setDraggedTaskId
 const selectSetDraggedTaskInitialStatus = (state: any) => state.setDraggedTaskInitialStatus
-const selectSetDragOverColumn = (state: any) => state.setDragOverColumn
+// const selectSetDragOverColumn = (state: any) => state.setDragOverColumn
 const selectCollaborations = (state: any) => state.collaborations
 
 export default function TaskCard({ task, columnStatus }: Props) {
@@ -31,10 +42,10 @@ export default function TaskCard({ task, columnStatus }: Props) {
     const draggedTaskId = useTaskStore(selectDraggedTaskId)
     const setDraggedTaskId = useTaskStore(selectSetDraggedTaskId)
     const setDraggedTaskInitialStatus = useTaskStore(selectSetDraggedTaskInitialStatus)
-    const setDragOverColumn = useTaskStore(selectSetDragOverColumn)
-    const collaborations = useTaskStore(selectCollaborations).filter(c => c.taskId === task.id)
+    // const setDragOverColumn = useTaskStore(selectSetDragOverColumn)
+    const collaborations = useTaskStore(selectCollaborations).filter((c: Collaboration) => c.taskId === task.id)
 
-    const assignee = users.find(u => u.id === task.assigneeId)
+    const assignee = users.find((u: User) => u.id === task.assigneeId)
     const overdue = isOverdue(task.dueDate)
     const dueSoon = isDueSoon(task.dueDate)
     const isDragging = draggedTaskId === task.id

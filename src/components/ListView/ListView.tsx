@@ -1,11 +1,11 @@
-import React, { useRef, useState, useCallback, useMemo } from 'react'
+import React, { useRef, useState, useMemo } from 'react'
 import { useTaskStore } from '../../store/useTaskStore'
 import { applyFilters, sortTasks } from '../../utils/filterSort'
 import { calculateVirtualRange } from '../../utils/virtualScroll'
 import EmptyState from '../EmptyState/EmptyState'
 import ListRow from './ListRow'
 
-const ROW_HEIGHT = 64 // px (including margin)
+const ROW_HEIGHT = 64
 const BUFFER_SIZE = 5
 
 export default function ListView() {

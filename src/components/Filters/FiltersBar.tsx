@@ -2,6 +2,15 @@ import { useCallback } from 'react'
 import { useTaskStore } from '../../store/useTaskStore'
 import { usesAnyFilters } from '../../utils/queryParamHelpers'
 import { USERS } from '../../utils/dataGenerator'
+import { Priority, Status } from '../../types'
+
+type Filters = {
+    status: Status[]
+    priority: Priority[]
+    assignee: string[]
+    dueFrom?: string
+    dueTo?: string
+}
 
 const selectFilters = (state: any) => state.filters
 const selectSetFilters = (state: any) => state.setFilters
@@ -12,18 +21,18 @@ export default function FiltersBar() {
     const setFilters = useTaskStore(selectSetFilters)
     const resetFilters = useTaskStore(selectResetFilters)
 
-    const toggleStatusFilter = useCallback((status: string) => {
+    const toggleStatusFilter = useCallback((status: Status) => {
         setFilters({
             status: filters.status.includes(status as any)
-                ? filters.status.filter(s => s !== status)
+                ? filters.status.filter((s: Status) => s !== status)
                 : [...filters.status, status as any]
         })
     }, [filters.status, setFilters])
 
-    const togglePriorityFilter = useCallback((priority: string) => {
+    const togglePriorityFilter = useCallback((priority: Priority) => {
         setFilters({
             priority: filters.priority.includes(priority as any)
-                ? filters.priority.filter(p => p !== priority)
+                ? filters.priority.filter((p: Priority) => p !== priority)
                 : [...filters.priority, priority as any]
         })
     }, [filters.priority, setFilters])
@@ -31,7 +40,7 @@ export default function FiltersBar() {
     const toggleAssigneeFilter = useCallback((assigneeId: string) => {
         setFilters({
             assignee: filters.assignee.includes(assigneeId)
-                ? filters.assignee.filter(a => a !== assigneeId)
+                ? filters.assignee.filter((a: string) => a !== assigneeId)
                 : [...filters.assignee, assigneeId]
         })
     }, [filters.assignee, setFilters])
@@ -47,7 +56,7 @@ export default function FiltersBar() {
                 <div className="flex flex-wrap items-center gap-2">
                     <span className="font-semibold text-sm text-gray-700 w-16">Status:</span>
                     <div className="flex flex-wrap gap-1">
-                        {['To Do', 'In Progress', 'In Review', 'Done'].map(status => (
+                        {(['To Do', 'In Progress', 'In Review', 'Done'] as Status[]).map((status) => (
                             <button
                                 key={status}
                                 onClick={() => toggleStatusFilter(status)}
@@ -65,7 +74,7 @@ export default function FiltersBar() {
                 <div className="flex flex-wrap items-center gap-2">
                     <span className="font-semibold text-sm text-gray-700 w-16">Priority:</span>
                     <div className="flex flex-wrap gap-1">
-                        {['Critical', 'High', 'Medium', 'Low'].map(priority => (
+                        {(['Critical', 'High', 'Medium', 'Low'] as Priority[]).map(priority => (
                             <button
                                 key={priority}
                                 onClick={() => togglePriorityFilter(priority)}

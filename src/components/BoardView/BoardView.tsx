@@ -1,8 +1,8 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useTaskStore } from '../../store/useTaskStore'
 import { applyFilters } from '../../utils/filterSort'
 import KanbanColumn from './KanbanColumn'
-import EmptyState from '../EmptyState/EmptyState'
+// import EmptyState from '../EmptyState/EmptyState'
 import DragLayer from '../DragLayer/DragLayer'
 import { Status } from '../../types'
 
@@ -12,7 +12,7 @@ export default function BoardView() {
     const tasks = useTaskStore(s => s.tasks)
     const filters = useTaskStore(s => s.filters)
     const dragOverColumn = useTaskStore(s => s.dragOverColumn)
-    const setDragOverColumn = useTaskStore(s => s.setDragOverColumn)
+    // const setDragOverColumn = useTaskStore(s => s.setDragOverColumn)
 
     const filteredTasks = applyFilters(tasks, filters)
 

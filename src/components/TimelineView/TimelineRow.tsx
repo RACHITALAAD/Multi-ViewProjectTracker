@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Task } from '../../types'
-import { parseISO, isToday as isTodayFn, differenceInDays, format } from 'date-fns'
+import { parseISO } from 'date-fns'
 
 interface Props {
     task: Task

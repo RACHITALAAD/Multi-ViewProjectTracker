@@ -15,7 +15,7 @@ export default function KanbanColumn({ status, tasks, isDropZoneActive }: Props)
     const columnRef = useRef<HTMLDivElement>(null)
 
     const draggedTaskId = useTaskStore(s => s.draggedTaskId)
-    const draggedTaskInitialStatus = useTaskStore(s => s.draggedTaskInitialStatus)
+    // const draggedTaskInitialStatus = useTaskStore(s => s.draggedTaskInitialStatus)
     const setDragOverColumn = useTaskStore(s => s.setDragOverColumn)
     const updateTask = useTaskStore(s => s.updateTask)
     const setDraggedTaskId = useTaskStore(s => s.setDraggedTaskId)

@@ -26,5 +26,5 @@ export function useCollaborationSimulation() {
         }, 3000)
 
         return () => clearInterval(interval)
-    }, [tasks.length, setCollaborations]) // Only depend on tasks.length, not tasks array
+    }, [tasks.length, setCollaborations])
 }
