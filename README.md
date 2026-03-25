@@ -2,6 +2,14 @@
 
 A high-performance project management interface featuring three synchronized views, custom drag-and-drop, virtual scrolling, and live collaboration indicators. Built with React, TypeScript, and Tailwind CSS.
 
+---
+
+## 🌐 Live Demo
+
+🔗 https://projecttracker-five.vercel.app/
+
+---
+
 ## ✨ Features
 
 ### 📊 Three Synchronized Views
@@ -36,6 +44,8 @@ A high-performance project management interface featuring three synchronized vie
 - URL-synced state for bookmarking & sharing
 - Back-navigation support
 
+---
+
 ## 🛠 Tech Stack
 
 - **React 18** with TypeScript
@@ -50,12 +60,18 @@ A high-performance project management interface featuring three synchronized vie
 - 📜 Virtual scrolling (custom calculations)
 - 🎨 UI components (all custom built)
 
+---
+
 ## 📈 Performance
 
-- **Lighthouse Score** - 88+
-- **Virtual Scrolling** - Maintains 60fps with 500+ tasks
-- **Render Optimization** - Memoization & context splitting
-- **Bundle Size** - ~120KB gzipped
+- **Performance:** 97  
+- **Accessibility:** 75  
+- **Best Practices:** 100  
+- **SEO:** 90  
+
+![Lighthouse Score](screenshots/lighthouse.png)
+
+---
 
 ## 🚀 Getting Started
 
@@ -65,10 +81,38 @@ A high-performance project management interface featuring three synchronized vie
 ### Installation
 
 ```bash
-git clone 
+git clone https://github.com/RACHITALAAD/Multi-ViewProjectTracker.git
 
-cd project-tracker
+cd project
 
 npm install
 
 npm run dev
+```
+
+## ⚙️ Setup Instructions
+
+1. Clone the repository  
+2. Install dependencies using `npm install` 
+3. Run development server using `npm run dev`
+4. Build the project using `npm run build`
+
+---
+
+## 🧠 State Management Decision
+
+Zustand was chosen for its simplicity and minimal boilerplate compared to Redux. It allows efficient global state sharing across multiple views without prop drilling. It is especially useful for managing drag-and-drop state, filters, and collaboration indicators while keeping the codebase clean and maintainable.
+
+---
+
+## ⚡ Virtual Scrolling Approach
+
+Virtual scrolling is implemented by calculating visible items based on scroll position and rendering only those elements along with a small buffer. The overall container height is preserved to maintain correct scrollbar behavior. This reduces DOM nodes significantly and ensures smooth performance even with large datasets.
+
+---
+
+## 🎯 Drag-and-Drop Approach
+
+Drag-and-drop is implemented using native pointer events without external libraries. A floating drag element (ghost) is rendered while dragging, and drop zones are detected using pointer position. A placeholder element is used to preserve layout structure, and invalid drops trigger a smooth snapback animation.
+
+---
