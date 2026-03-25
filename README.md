@@ -1,6 +1,6 @@
-# 📋 Project Tracker - Multi-View Task Management UI
+# Project Tracker - Multi-View Task Management UI
 
-A high-performance project management interface featuring three synchronized views, custom drag-and-drop, virtual scrolling, and live collaboration indicators. Built with React, TypeScript, and Tailwind CSS.
+A high-performance project management application with three synchronized views custom drag-and-drop, virtual scrolling, and live collaboration features. Built using React, TypeScript, and Tailwind CSS.
 
 ---
 
@@ -113,6 +113,6 @@ Virtual scrolling is implemented by calculating visible items based on scroll po
 
 ## 🎯 Drag-and-Drop Approach
 
-Drag-and-drop is implemented using native pointer events without external libraries. A floating drag element (ghost) is rendered while dragging, and drop zones are detected using pointer position. A placeholder element is used to preserve layout structure, and invalid drops trigger a smooth snapback animation.
+Drag-and-drop is implemented using native pointer events without external libraries. A floating drag element is rendered while dragging, and drop zones are detected using pointer position. A placeholder element is used to preserve layout structure and invalid drops trigger a smooth snapback animation.
 
 ---
